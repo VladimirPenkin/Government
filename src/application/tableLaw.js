@@ -1,26 +1,21 @@
 import Singleton from "./law"
 
-let showAllLaws;
+let showAllLaws = document.querySelector("#laws").addEventListener("click", () => {
 
-window.addEventListener("load", function () {
+    let lawObj = Singleton.getAllLaw();
 
-    showAllLaws = document.querySelector("#laws").addEventListener("click", () => {
+    document.querySelector("#conteiner").innerHTML = "";
+    let table = document.createElement("table");
 
-        let lawObj = Singleton.getAllLaw();
-
-        document.querySelector("#conteiner").innerHTML = "";
-        let table = document.createElement("table");
-
+    table.innerHTML +=
+        `<tr><td>№</td><td>Name</td><td>Text</td></tr>`
+    for (let i = 0; i < lawObj.length; i++) {
         table.innerHTML +=
-            `<tr><td>№</td><td>Name</td><td>Text</td></tr>`
-        for (let i = 0; i < lawObj.length; i++) {
-            table.innerHTML +=
-        			`<tr><td>${lawObj[i].id}</td><td>${lawObj[i].name}</td><td>${lawObj[i].text}</td></tr>`
-        };
+            `<tr><td>${lawObj[i].id}</td><td>${lawObj[i].name}</td><td>${lawObj[i].text}</td></tr>`
+    };
 
-        document.querySelector("#conteiner").prepend(table);
-    
-    })
-});
+    document.querySelector("#conteiner").prepend(table);
+
+})
 
 export default showAllLaws;

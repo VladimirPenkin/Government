@@ -1,22 +1,16 @@
 import Singleton from "./law"
 
-let acceptLaw;
+let acceptLaw = document.querySelector("#accept").addEventListener("click", () => {
 
-window.addEventListener("load", function () {
+    let idLaw = document.querySelector("#idLaw").value;
+    let nameLaw = document.querySelector("#nameLaw").value;
+    let textLaw = document.querySelector("#textLaw").value;
 
-    acceptLaw = document.querySelector("#accept").addEventListener("click", () => {
+    Singleton.add({ id: idLaw, name: nameLaw, text: textLaw });
 
-        let idLaw = document.querySelector("#idLaw").value;
-        let nameLaw = document.querySelector("#nameLaw").value;
-        let textLaw = document.querySelector("#textLaw").value;
-
-        Singleton.add({ id: idLaw, name: nameLaw, text: textLaw });
-
-        document.querySelector("#idLaw").value = "";
-        document.querySelector("#nameLaw").value = "";
-        document.querySelector("#textLaw").value = "";
-
-    });
+    document.querySelector("#idLaw").value = "";
+    document.querySelector("#nameLaw").value = "";
+    document.querySelector("#textLaw").value = "";
 
 });
 
